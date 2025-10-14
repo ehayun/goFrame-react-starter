@@ -1,0 +1,15 @@
+{
+  "menu": {
+    "home": "בית",
+    "dashboard": "לוח בקרה",
+    "users": "משתמשים",
+    "settings": "הגדרות"
+  },
+  "common": {
+    "welcome": "ברוך הבא",
+    "logout": "התנתק",
+    "profile": "פרופיל",
+    "language": "שפה",
+    "search": "חיפוש"
+  }
+}

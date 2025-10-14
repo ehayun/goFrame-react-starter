@@ -1,0 +1,15 @@
+{
+  "menu": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "settings": "Settings"
+  },
+  "common": {
+    "welcome": "Welcome",
+    "logout": "Logout",
+    "profile": "Profile",
+    "language": "Language",
+    "search": "Search"
+  }
+}

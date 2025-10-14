@@ -1,0 +1,70 @@
+# Application Configuration
+app:
+  name: "Tzlev"
+  environment: "development"
+  debug: false
+  port: 8080
+
+# Database Configuration (uses MCP PostgreSQL)
+# Sensitive values (host, port, user, pass, name) are read from environment variables
+database:
+  default:
+    type: "pgsql"
+    extra: "sslmode=disable"
+    debug: false
+    maxIdle: 5
+    maxOpen: 25
+    maxLifetime: "5m"
+
+# Redis Configuration
+# Password is read from REDIS_PASSWORD environment variable
+redis:
+  host: "localhost"
+  port: 6379
+  database: 0
+  poolSize: 10
+  sessionPrefix: "tzlev:session:"
+  cachePrefix: "tzlev:cache:"
+  sessionTTL: "24h"
+
+# Gmail OAuth Configuration
+# ClientID and ClientSecret are read from environment variables
+oauth:
+  google:
+    redirectURL: "http://localhost:8080/auth/google/callback"
+    scopes:
+      - "https://www.googleapis.com/auth/userinfo.email"
+      - "https://www.googleapis.com/auth/userinfo.profile"
+
+# Email Service Configuration
+# Username, password, and from are read from environment variables
+email:
+  smtp:
+    host: "smtp.gmail.com"
+    port: 587
+    fromName: "Tzlev Support"
+  templates:
+    path: "templates/email"
+
+# Session Configuration
+# SecretKey is read from SESSION_SECRET environment variable
+session:
+  store: "redis"
+  cookieName: "tzlev_session"
+  cookieMaxAge: 86400
+  cookieSecure: false
+  cookieHttpOnly: true
+  cookieSameSite: "lax"
+
+# Security Configuration
+# JwtSecret is read from JWT_SECRET environment variable
+security:
+  jwtExpiration: "1h"
+  bcryptCost: 12
+
+# Logging Configuration
+logging:
+  level: "debug"
+  format: "json"
+  output: "stdout"
+  filePath: "logs/app.log"

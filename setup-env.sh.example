@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Tzlev Environment Variables Setup Script (EXAMPLE)
+# Copy this file to setup-env.sh and fill in your actual values
+# Usage: source setup-env.sh
+# or: . setup-env.sh
+
+echo "Setting up Tzlev environment variables..."
+
+# ============================================
+# Database Configuration (PostgreSQL)
+# ============================================
+export DB_HOST="localhost"
+export DB_PORT="5432"
+export DB_USER="your_db_user"
+export DB_PASSWORD="your_db_password"
+export DB_NAME="tzlev"
+
+# ============================================
+# Redis Configuration
+# ============================================
+export REDIS_PASSWORD=""  # Leave empty if no password is set
+
+# ============================================
+# Google OAuth Configuration
+# ============================================
+# Get these from: https://console.cloud.google.com/apis/credentials
+export GOOGLE_CLIENT_ID="your-google-client-id.apps.googleusercontent.com"
+export GOOGLE_CLIENT_SECRET="your-google-client-secret"
+
+# ============================================
+# Email/SMTP Configuration
+# ============================================
+# Gmail SMTP settings (or use your own SMTP server)
+export EMAIL_USERNAME="your-email@gmail.com"
+export EMAIL_PASSWORD="your-app-specific-password"
+export EMAIL_FROM="noreply@tzlev.com"
+
+# ============================================
+# Security Configuration
+# ============================================
+# Generate strong random secrets (you can use: openssl rand -base64 32)
+export SESSION_SECRET="your-session-secret-key-here"
+export JWT_SECRET="your-jwt-secret-key-here"
+
+echo "✓ Environment variables set successfully!"
+echo ""
+echo "Note: Make sure to replace placeholder values with your actual credentials."
+echo "      Never commit this file with real credentials to version control!"
