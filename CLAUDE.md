@@ -1,1 +1,2 @@
 - for db query use mcp
+- do not run "go run". just "go build" to check if we have compilation errors

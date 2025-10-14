@@ -9,6 +9,7 @@
 go.work
 bin/
 vendor/
+tzlev
 
 # Frontend
 node_modules/
@@ -38,7 +39,21 @@ public/assets/.vite/
 .env
 .env.local
 .env.*.local
+setup-env.sh
 
 # Logs
 logs/
 *.log
+
+# Generated files
+bin/
+public/
+logs/
+
+# Frontend
+node_modules/
+frontend/dist/
+frontend/node_modules/
+
+# Environment
+.env
