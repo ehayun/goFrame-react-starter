@@ -282,6 +282,8 @@ GOOGLE_CLIENT_ID=your_google_client_id.apps.googleusercontent.com
 GOOGLE_CLIENT_SECRET=your_google_client_secret
 
 # Email
+EMAIL_SMTP_HOST=smtp.gmail.com
+EMAIL_SMTP_PORT=587
 EMAIL_USERNAME=your_email@gmail.com
 EMAIL_PASSWORD=your_gmail_app_password
 EMAIL_FROM=noreply@tzlev.com
@@ -1364,11 +1366,11 @@ Email service is configured in the configuration file:
 ```yaml
 email:
   smtp:
-    host: "smtp.gmail.com"
-    port: 587
-    username: "${EMAIL_USERNAME}"
-    password: "${EMAIL_PASSWORD}"
-    from: "${EMAIL_FROM}"
+    host: "${EMAIL_SMTP_HOST}"      # Environment variable
+    port: "${EMAIL_SMTP_PORT}"      # Environment variable
+    username: "${EMAIL_USERNAME}"   # Environment variable
+    password: "${EMAIL_PASSWORD}"   # Environment variable
+    from: "${EMAIL_FROM}"           # Environment variable
     fromName: "Tzlev Support"
   templates:
     path: "templates/email"
@@ -1405,14 +1407,22 @@ func NewEmailService() *EmailService {
     ctx := gctx.New()
     cfg := g.Cfg()
 
+    // Get port from environment variable with default fallback
+    port := 587 // default SMTP port
+    if portStr := os.Getenv("EMAIL_SMTP_PORT"); portStr != "" {
+        if p, err := strconv.Atoi(portStr); err == nil {
+            port = p
+        }
+    }
+
     return &EmailService{
-        host:         cfg.MustGet(ctx, "email.smtp.host").String(),
-        port:         cfg.MustGet(ctx, "email.smtp.port").Int(),
-        username:     cfg.MustGet(ctx, "email.smtp.username").String(),
-        password:     cfg.MustGet(ctx, "email.smtp.password").String(),
-        from:         cfg.MustGet(ctx, "email.smtp.from").String(),
+        host:         os.Getenv("EMAIL_SMTP_HOST"),
+        port:         port,
+        username:     os.Getenv("EMAIL_USERNAME"),
+        password:     os.Getenv("EMAIL_PASSWORD"),
+        from:         os.Getenv("EMAIL_FROM"),
         fromName:     cfg.MustGet(ctx, "email.smtp.fromName").String(),
-        templatePath: cfg.MustGet(ctx, "email.templates.path").String(),
+        templatePath: "templates/email",
     }
 }
 

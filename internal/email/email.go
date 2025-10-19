@@ -7,6 +7,7 @@ import (
 	"net/smtp"
 	"os"
 	"path/filepath"
+	"strconv"
 
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/os/gctx"
@@ -26,9 +27,17 @@ func NewEmailService() *EmailService {
 	ctx := gctx.New()
 	cfg := g.Cfg()
 
+	// Get port from environment variable with default fallback
+	port := 587 // default SMTP port
+	if portStr := os.Getenv("EMAIL_SMTP_PORT"); portStr != "" {
+		if p, err := strconv.Atoi(portStr); err == nil {
+			port = p
+		}
+	}
+
 	return &EmailService{
-		host:         cfg.MustGet(ctx, "email.smtp.host").String(),
-		port:         cfg.MustGet(ctx, "email.smtp.port").Int(),
+		host:         os.Getenv("EMAIL_SMTP_HOST"),
+		port:         port,
 		username:     os.Getenv("EMAIL_USERNAME"),
 		password:     os.Getenv("EMAIL_PASSWORD"),
 		from:         os.Getenv("EMAIL_FROM"),
