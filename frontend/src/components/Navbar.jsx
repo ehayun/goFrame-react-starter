@@ -2,6 +2,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { Link } from 'react-router-dom'
+import AcademicYears from './AcademicYears'
 
 function Navbar() {
   const { t, i18n } = useTranslation()
@@ -30,6 +31,12 @@ function Navbar() {
             <button type="button" className="sidebar-mobile-toggle">
               <iconify-icon icon="heroicons:bars-3-solid" className="icon"></iconify-icon>
             </button>
+            {/* Academic Year Selector - Only show if user is logged in */}
+            {isAuthenticated && (
+              <div className="navbar-academic-year">
+                <AcademicYears />
+              </div>
+            )}
           </div>
         </div>
         <div className="col-auto">

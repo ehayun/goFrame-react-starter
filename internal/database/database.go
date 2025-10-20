@@ -9,6 +9,14 @@ import (
 	"github.com/gogf/gf/v2/os/gctx"
 )
 
+// getEnvWithDefault returns the value of an environment variable or a default value if not set
+func getEnvWithDefault(key, defaultValue string) string {
+	if value := os.Getenv(key); value != "" {
+		return value
+	}
+	return defaultValue
+}
+
 // Init initializes database connection using config.yaml and environment variables
 func Init() error {
 	ctx := gctx.New()
@@ -16,11 +24,11 @@ func Init() error {
 
 	// Read sensitive data from environment variables, static config from config.yaml
 	config := gdb.ConfigNode{
-		Host:             os.Getenv("DB_HOST"),
-		Port:             os.Getenv("DB_PORT"),
-		User:             os.Getenv("DB_USER"),
-		Pass:             os.Getenv("DB_PASSWORD"),
-		Name:             os.Getenv("DB_NAME"),
+		Host:             getEnvWithDefault("DB_HOST", "localhost"),
+		Port:             getEnvWithDefault("DB_PORT", "5432"),
+		User:             getEnvWithDefault("DB_USER", "postgres"),
+		Pass:             getEnvWithDefault("DB_PASSWORD", "postgres"),
+		Name:             getEnvWithDefault("DB_NAME", "unified"),
 		Type:             cfg.MustGet(ctx, "database.default.type").String(),
 		Extra:            cfg.MustGet(ctx, "database.default.extra").String(),
 		Debug:            cfg.MustGet(ctx, "database.default.debug").Bool(),

@@ -3,6 +3,7 @@
     "home": "בית",
     "dashboard": "לוח בקרה",
     "users": "משתמשים",
+    "permissions": "הרשאות",
     "settings": "הגדרות"
   },
   "common": {
@@ -11,5 +12,47 @@
     "profile": "פרופיל",
     "language": "שפה",
     "search": "חיפוש"
+  },
+  "permissions": {
+    "title": "הרשאות",
+    "tabs": {
+      "modules": "מודולים",
+      "groups": "קבוצות",
+      "groupPermissions": "הרשאות קבוצה",
+      "userPermissions": "הרשאות משתמש"
+    },
+    "modules": {
+      "title": "מודולים",
+      "authRequired": "נדרש אימות. אנא התחברו.",
+      "loadError": "שגיאה בטעינת המודולים",
+      "name": "שם",
+      "description": "תיאור",
+      "actions": "פעולות",
+      "addNew": "הוסף חדש",
+      "noResources": "לא נמצאו מודולים",
+      "addResource": "הוסף מודול",
+      "editResource": "ערוך מודול",
+      "cancel": "ביטול",
+      "create": "צור",
+      "update": "עדכן",
+      "confirmDelete": "האם אתה בטוח שברצונך למחוק מודול זה?",
+      "deleteError": "שגיאה במחיקת המודול",
+      "saveError": "שגיאה בשמירת המודול",
+      "nameRequired": "שם המודול נדרש",
+      "edit": "ערוך",
+      "delete": "מחק"
+    },
+    "groups": {
+      "title": "קבוצות",
+      "description": "תוכן ניהול קבוצות יופיע כאן."
+    },
+    "groupPermissions": {
+      "title": "הרשאות קבוצה",
+      "description": "תוכן ניהול הרשאות קבוצה יופיע כאן."
+    },
+    "userPermissions": {
+      "title": "הרשאות משתמש",
+      "description": "תוכן ניהול הרשאות משתמש יופיע כאן."
+    }
   }
 }

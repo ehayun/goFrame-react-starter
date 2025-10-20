@@ -3,6 +3,7 @@
     "home": "Home",
     "dashboard": "Dashboard",
     "users": "Users",
+    "permissions": "Permissions",
     "settings": "Settings"
   },
   "common": {
@@ -11,5 +12,48 @@
     "profile": "Profile",
     "language": "Language",
     "search": "Search"
+  },
+  "permissions": {
+    "title": "Permissions",
+    "tabs": {
+      "modules": "Modules",
+      "groups": "Groups",
+      "groupPermissions": "Group Permissions",
+      "userPermissions": "User Permissions"
+    },
+    "modules": {
+      "title": "Modules",
+      "description": "Module management content will appear here.",
+      "authRequired": "Authentication required. Please log in.",
+      "loadError": "Error loading resources",
+      "name": "Name",
+      "description": "Description",
+      "actions": "Actions",
+      "addNew": "Add New",
+      "noResources": "No resources found",
+      "addResource": "Add Resource",
+      "editResource": "Edit Resource",
+      "cancel": "Cancel",
+      "create": "Create",
+      "update": "Update",
+      "confirmDelete": "Are you sure you want to delete this resource?",
+      "deleteError": "Error deleting resource",
+      "saveError": "Error saving resource",
+      "nameRequired": "Resource name is required",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "groups": {
+      "title": "Groups",
+      "description": "Group management content will appear here."
+    },
+    "groupPermissions": {
+      "title": "Group Permissions",
+      "description": "Group permissions management content will appear here."
+    },
+    "userPermissions": {
+      "title": "User Permissions",
+      "description": "User permissions management content will appear here."
+    }
   }
 }

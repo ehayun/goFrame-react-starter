@@ -15,7 +15,7 @@ function Sidebar() {
         <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
       </button>
       <div>
-        <a href="/" className="sidebar-logo">
+        <a href="/" className="sidebar-logo bg-blue-light">
           <img src="/images/logo.png" alt="site logo" className="light-logo" />
           <img src="/images/logo-light.png" alt="site logo" className="dark-logo" />
           <img src="/images/logo-icon.png" alt="site logo" className="logo-icon" />

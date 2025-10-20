@@ -123,6 +123,8 @@ func runWebServer(ctx context.Context) {
 func setupRoutes(s *ghttp.Server) {
 	healthCtrl := controller.NewHealthController()
 	authCtrl := controller.NewAuthController()
+	academicYearCtrl := controller.NewAcademicYearController()
+	appResourceCtrl := controller.NewAppResourceController()
 
 	// Public routes
 	s.Group("/auth", func(group *ghttp.RouterGroup) {
@@ -141,6 +143,14 @@ func setupRoutes(s *ghttp.Server) {
 		group.Group("/", func(protectedGroup *ghttp.RouterGroup) {
 			protectedGroup.Middleware(middleware.Auth())
 			protectedGroup.GET("/me", authCtrl.GetCurrentUser)
+			protectedGroup.GET("/academic-year", academicYearCtrl.GetAcademicYear)
+			protectedGroup.POST("/academic-year", academicYearCtrl.SetAcademicYear)
+			protectedGroup.GET("/academic-years", academicYearCtrl.GetAcademicYearsList)
+			protectedGroup.GET("/app-resources", appResourceCtrl.GetAppResources)
+			protectedGroup.GET("/app-resources/{id}", appResourceCtrl.GetAppResource)
+			protectedGroup.POST("/app-resources", appResourceCtrl.CreateAppResource)
+			protectedGroup.PUT("/app-resources/{id}", appResourceCtrl.UpdateAppResource)
+			protectedGroup.DELETE("/app-resources/{id}", appResourceCtrl.DeleteAppResource)
 		})
 	})
 }
